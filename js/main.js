@@ -1,11 +1,10 @@
 const createAttribute = (label, value) => {
-    const attribute = document.createElement('div');
-    attribute.className = 'player-attribute';
+    const attribute = document.createElement('tr');
 
-    const attributeLabel = document.createElement('span');
-    attributeLabel.textContent = label + ': ';
+    const attributeLabel = document.createElement('td');
+    attributeLabel.textContent = label;
 
-    const attributeValue = document.createElement('span');
+    const attributeValue = document.createElement('td');
     attributeValue.textContent = value;
 
     attribute.appendChild(attributeLabel);
@@ -20,11 +19,14 @@ const createPlayerCard = (playerData) => {
 
     const playerImage = document.createElement('img');
     playerImage.src = playerData.photo;
+    playerImage.style.width = '150px';
     playerCard.appendChild(playerImage);
 
     const playerName = document.createElement('h2');
     playerName.textContent = playerData.nom;
     playerCard.appendChild(playerName);
+
+    const playerInfoTable = document.createElement('table');
 
     const playerAge = createAttribute('Âge', playerData.age);
     const playerTaille = createAttribute('Taille', playerData.taille);
@@ -32,34 +34,34 @@ const createPlayerCard = (playerData) => {
     const playerNationalite = createAttribute('Nationalité', playerData.nationalite);
     const playerPostes = createAttribute('Postes', playerData.postes.join(', '));
 
-    // Ajoutez ici les attributs techniques, mentaux et physiques du joueur
-    const technicalAttributes = document.createElement('div');
-    technicalAttributes.className = 'player-attributes';
+    playerInfoTable.appendChild(playerAge);
+    playerInfoTable.appendChild(playerTaille);
+    playerInfoTable.appendChild(playerPoids);
+    playerInfoTable.appendChild(playerNationalite);
+    playerInfoTable.appendChild(playerPostes);
+
+    const technicalAttributes = document.createElement('table');
+    technicalAttributes.className = 'attribute-table';
     Object.entries(playerData.technical).forEach(([label, value]) => {
         const attribute = createAttribute(label, value);
         technicalAttributes.appendChild(attribute);
     });
 
-    const mentalAttributes = document.createElement('div');
-    mentalAttributes.className = 'player-attributes';
+    const mentalAttributes = document.createElement('table');
+    mentalAttributes.className = 'attribute-table';
     Object.entries(playerData.mental).forEach(([label, value]) => {
         const attribute = createAttribute(label, value);
         mentalAttributes.appendChild(attribute);
     });
 
-    const physicalAttributes = document.createElement('div');
-    physicalAttributes.className = 'player-attributes';
+    const physicalAttributes = document.createElement('table');
+    physicalAttributes.className = 'attribute-table';
     Object.entries(playerData.physical).forEach(([label, value]) => {
         const attribute = createAttribute(label, value);
         physicalAttributes.appendChild(attribute);
     });
 
-    // Ajoutez les attributs techniques, mentaux et physiques à la carte du joueur
-    playerCard.appendChild(playerAge);
-    playerCard.appendChild(playerTaille);
-    playerCard.appendChild(playerPoids);
-    playerCard.appendChild(playerNationalite);
-    playerCard.appendChild(playerPostes);
+    playerCard.appendChild(playerInfoTable);
     playerCard.appendChild(technicalAttributes);
     playerCard.appendChild(mentalAttributes);
     playerCard.appendChild(physicalAttributes);
@@ -67,7 +69,6 @@ const createPlayerCard = (playerData) => {
     return playerCard;
 };
 
-// Exemple de données des joueurs
 const playersData = [
     {
         "nom": "Endrick",
@@ -170,10 +171,60 @@ const playersData = [
             "Qualité Physiques Naturelles": 16,
             "Vitesse": 15
         }
+    },
+    {
+        "nom": "Bukayo Saka",
+        "age": 20,
+        "taille": "1m78",
+        "poids": "69kg",
+        "nationalite": "Angleterre",
+        "postes": ["Ailier droit", "Ailier gauche"],
+        "photo": "img/Saka.png",
+        "technical": {
+            "Centres": 15,
+            "Contrôle de Balle": 15,
+            "Corners": 13,
+            "Coup Francs": 9,
+            "Dribbles": 15,
+            "Finition": 13,
+            "Jeu de Tête": 8,
+            "Marquage": 10,
+            "Passes": 14,
+            "Penalty": 14,
+            "Tacles": 10,
+            "Technique": 16,
+            "Tirs de Loin": 13,
+            "Touches Longues": 6
+        },
+        "mental": {
+            "Agressivité": 12,
+            "Anticipation": 16,
+            "Appels de Balle": 16,
+            "Concentration": 14,
+            "Courage": 12,
+            "Décisions": 16,
+            "Détermination": 16,
+            "Inspiration": 16,
+            "Jeu Collectif": 17,
+            "Leadership": 9,
+            "Placement": 11,
+            "Sang-Froid": 15,
+            "Vision du Jeu": 16,
+            "Volume de Jeu": 15
+        },
+        "physical": {
+            "Accélération": 16,
+            "Agilité": 16,
+            "Détente Verticale": 9,
+            "Endurance": 16,
+            "Équilibre": 17,
+            "Puissance": 13,
+            "Qualité Physiques Naturelles": 16,
+            "Vitesse": 16
+        }
     }
 ];
 
-// Crée et affiche les cartes des joueurs
 const playerCardContainer = document.getElementById('player-card');
 playersData.forEach(playerData => {
     const playerCard = createPlayerCard(playerData);
