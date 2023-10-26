@@ -1,6 +1,32 @@
+/* Styles pour la carte du joueur */
 .player-card {
-    border: 1px solid #ccc;
-    padding: 10px;
-    margin: 10px;
     width: 300px;
-}
+    border: 1px solid #ccc;
+    padding: 20px;
+    margin: 20px;
+    text-align: center;
+    background-color: #f9f9f9;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+  }
+  
+  /* Styles pour les attributs */
+  .attributes {
+    margin-top: 10px;
+  }
+  
+  .attributes h2 {
+    font-size: 16px;
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+  
+  .attributes ul {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .attributes li {
+    font-size: 14px;
+    margin: 0;
+  }
+  
