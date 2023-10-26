@@ -76,5 +76,8 @@ table tr {
 
 table td {
     padding: 5px 0;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
     color:rgb(73, 4, 103);
 }
