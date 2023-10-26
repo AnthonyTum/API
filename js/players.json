@@ -11,43 +11,19 @@
             "Centres": 10,
             "Contrôle de Balle": 13,
             "Corners": 7,
-            "Coup Francs": 12,
-            "Dribbles": 14,
-            "Finition": 11,
-            "Jeu de Tête": 9,
-            "Marquage": 10,
-            "Passes": 14,
-            "Penalty": 12,
-            "Tacles": 11,
-            "Technique": 15,
-            "Tirs de Loin": 10,
-            "Touches Longues": 7
+            "Coup Francs": 12
         },
         "mental": {
             "Agressivité": 11,
             "Anticipation": 12,
             "Appels de Balle": 12,
-            "Concentration": 11,
-            "Courage": 13,
-            "Décisions": 12,
-            "Détermination": 15,
-            "Inspiration": 13,
-            "Jeu Collectif": 12,
-            "Leadership": 10,
-            "Placement": 10,
-            "Sang-Froid": 13,
-            "Vision du Jeu": 13,
-            "Volume de Jeu": 13
+            "Concentration": 11
         },
         "physical": {
             "Accélération": 15,
             "Agilité": 13,
             "Détente Verticale": 6,
-            "Endurance": 11,
-            "Équilibre": 14,
-            "Puissance": 9,
-            "Qualité Physiques Naturelles": 13,
-            "Vitesse": 15
+            "Endurance": 11
         }
     },
     {
@@ -62,43 +38,19 @@
             "Centres": 9,
             "Contrôle de Balle": 16,
             "Corners": 6,
-            "Coup Francs": 6,
-            "Dribbles": 17,
-            "Finition": 14,
-            "Jeu de Tête": 10,
-            "Marquage": 11,
-            "Passes": 15,
-            "Penalty": 13,
-            "Tacles": 12,
-            "Technique": 17,
-            "Tirs de Loin": 15,
-            "Touches Longues": 6
+            "Coup Francs": 6
         },
         "mental": {
             "Agressivité": 12,
             "Anticipation": 14,
             "Appels de Balle": 15,
-            "Concentration": 13,
-            "Courage": 11,
-            "Décisions": 15,
-            "Détermination": 16,
-            "Inspiration": 17,
-            "Jeu Collectif": 16,
-            "Leadership": 9,
-            "Placement": 12,
-            "Sang-Froid": 14,
-            "Vision du Jeu": 16,
-            "Volume de Jeu": 15
+            "Concentration": 12
         },
         "physical": {
-            "Accélération": 17,
-            "Agilité": 16,
-            "Détente Verticale": 12,
-            "Endurance": 13,
-            "Équilibre": 15,
-            "Puissance": 12,
-            "Qualité Physiques Naturelles": 17,
-            "Vitesse": 16
+            "Accélération": 15,
+            "Agilité": 17,
+            "Détente Verticale": 10,
+            "Endurance": 12
         }
     },
     {

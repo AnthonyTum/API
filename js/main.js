@@ -1,73 +1,80 @@
-// Fonction pour créer et ajouter un élément HTML avec des attributs
-function createElement(tag, attributes, text) {
-    const element = document.createElement(tag);
-    if (attributes) {
-        for (const key in attributes) {
-            element.setAttribute(key, attributes[key]);
-        }
-    }
-    if (text) {
-        element.textContent = text;
-    }
-    return element;
-}
+document.addEventListener("DOMContentLoaded", function () {
+    const playerCardContainer = document.getElementById("player-card-container");
 
-// Fonction pour ajouter un joueur au document
-function addPlayerToDocument(player) {
-    const playersList = document.getElementById('players-list');
-    const playerCard = createElement('div', { class: 'player-card' });
-    const playerImage = createElement('img', { src: player.photo, alt: player.nom });
-    const playerName = createElement('h2', null, player.nom);
-    const attributesSection = createElement('div', { class: 'attributes-section' });
-
-    // Crée les tables pour les attributs techniques, mentaux et physiques
-    for (const category in player) {
-        if (category !== 'photo' && category !== 'nom') {
-            const attributesTable = createElement('div', { class: 'attributes-table' });
-            const tableTitle = createElement('h3', null, `Attributs ${category.charAt(0).toUpperCase() + category.slice(1)}`);
-            const attributeTable = createElement('table');
-            const tableBody = createElement('tbody');
-
-            for (const attribute in player[category]) {
-                const attributeRow = createElement('tr');
-                const attributeName = createElement('td', null, attribute);
-                const attributeValue = createElement('td', null, player[category][attribute]);
-
-                attributeRow.appendChild(attributeName);
-                attributeRow.appendChild(attributeValue);
-                tableBody.appendChild(attributeRow);
-            }
-
-            attributeTable.appendChild(tableBody);
-            attributesTable.appendChild(tableTitle);
-            attributesTable.appendChild(attributeTable);
-            attributesSection.appendChild(attributesTable);
-        }
-    }
-
-    playerCard.appendChild(playerImage);
-    playerCard.appendChild(playerName);
-    playerCard.appendChild(attributesSection);
-    playersList.appendChild(playerCard);
-}
-
-// Fonction pour charger les données des joueurs depuis un fichier JSON
-function loadPlayers() {
     fetch('players.json')
         .then(response => response.json())
         .then(data => {
-            for (const player of data) {
-                addPlayerToDocument(player);
-            }
+            data.forEach(player => {
+                const playerCard = createPlayerCard(player);
+                playerCardContainer.appendChild(playerCard);
+            });
         })
-        .catch(error => console.error('Erreur lors du chargement des joueurs :', error));
-}
+        .catch(error => {
+            console.error('Erreur de chargement des données JSON :', error);
+        });
 
-// Charge les données des joueurs lorsque la page est chargée
-window.addEventListener('load', loadPlayers);
+    function createPlayerCard(player) {
+        const playerCard = document.createElement('div');
+        playerCard.classList.add('player-card');
 
+        const playerImage = document.createElement('img');
+        playerImage.src = player.photo;
+        playerImage.alt = player.nom;
+        playerCard.appendChild(playerImage);
 
-const backgrounds = ['img/wallpaper-01.jpg', 'img/wallpaper-02.jpg', 'img/wallpaper-05.jpg'];
+        const playerName = document.createElement('h2');
+        playerName.textContent = player.nom;
+        playerCard.appendChild(playerName);
+
+        const attributesSection = document.createElement('div');
+        attributesSection.classList.add('attributes-section');
+
+        const technicalTable = createAttributeTable('Attributs Techniques', player.technical);
+        attributesSection.appendChild(technicalTable);
+
+        const mentalTable = createAttributeTable('Attributs Mentaux', player.mental);
+        attributesSection.appendChild(mentalTable);
+
+        const physicalTable = createAttributeTable('Attributs Physiques', player.physical);
+        attributesSection.appendChild(physicalTable);
+
+        playerCard.appendChild(attributesSection);
+
+        return playerCard;
+    }
+
+    function createAttributeTable(title, attributes) {
+        const attributesTable = document.createElement('div');
+        attributesTable.classList.add('attributes-table');
+
+        const titleElement = document.createElement('h3');
+        titleElement.textContent = title;
+        attributesTable.appendChild(titleElement);
+
+        const table = document.createElement('table');
+
+        for (const attribute in attributes) {
+            const row = document.createElement('tr');
+
+            const attributeName = document.createElement('td');
+            attributeName.textContent = attribute;
+
+            const attributeValue = document.createElement('td');
+            attributeValue.textContent = attributes[attribute];
+
+            row.appendChild(attributeName);
+            row.appendChild(attributeValue);
+
+            table.appendChild(row);
+        }
+
+        attributesTable.appendChild(table);
+
+        return attributesTable;
+    }
+});
+
+const backgrounds = ['background1.jpg', 'background2.jpg', 'background3.jpg'];
 let currentBackgroundIndex = 0;
 
 function changeBackground() {
