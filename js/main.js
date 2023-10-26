@@ -15,6 +15,38 @@ document.addEventListener("DOMContentLoaded", function () {
                 const playerName = document.createElement("h2");
                 playerName.textContent = playerData.nom;
 
+                const playerInfo = document.createElement("p");
+
+                // Créer les éléments pour les informations du joueur
+                const ageLabel = document.createElement("strong");
+                ageLabel.textContent = "Âge:";
+                const age = document.createTextNode(` ${playerData.age} ans`);
+
+                const tailleLabel = document.createElement("strong");
+                tailleLabel.textContent = "Taille:";
+                const taille = document.createTextNode(` ${playerData.taille}`);
+
+                const poidsLabel = document.createElement("strong");
+                poidsLabel.textContent = "Poids:";
+                const poids = document.createTextNode(` ${playerData.poids}`);
+
+                const nationaliteLabel = document.createElement("strong");
+                nationaliteLabel.textContent = "Nationalité:";
+                const nationalite = document.createTextNode(` ${playerData.nationalite}`);
+
+                // Ajouter les éléments au paragraphe
+                playerInfo.appendChild(ageLabel);
+                playerInfo.appendChild(age);
+                playerInfo.appendChild(document.createElement("br"));
+                playerInfo.appendChild(tailleLabel);
+                playerInfo.appendChild(taille);
+                playerInfo.appendChild(document.createElement("br"));
+                playerInfo.appendChild(poidsLabel);
+                playerInfo.appendChild(poids);
+                playerInfo.appendChild(document.createElement("br"));
+                playerInfo.appendChild(nationaliteLabel);
+                playerInfo.appendChild(nationalite);
+
                 const attributesSection = document.createElement("div");
                 attributesSection.className = "attributes-section";
 
@@ -28,6 +60,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
                 playerCard.appendChild(playerImage);
                 playerCard.appendChild(playerName);
+                playerCard.appendChild(playerInfo);
                 playerCard.appendChild(attributesSection);
 
                 playersContainer.appendChild(playerCard);
