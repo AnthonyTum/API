@@ -74,7 +74,7 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 });
 
-const backgrounds = ['background1.jpg', 'background2.jpg', 'background3.jpg'];
+const backgrounds = ['wallpaper-01.jpg', 'wallpaper-02.jpg', 'wallpaper-05.jpg'];
 let currentBackgroundIndex = 0;
 
 function changeBackground() {
