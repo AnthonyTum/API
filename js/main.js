@@ -1,135 +1,97 @@
-// Fonction pour récupérer les données des joueurs depuis une API
-const fetchPlayerData = () => {
-    fetch('Uhttps://github.com/AnthonyTum/API') // Remplacez 'URL_DE_VOTRE_API' par l'URL réelle de l'API
-        .then((response) => {
-            if (!response.ok) {
-                throw new Error('Erreur de récupération des données.');
-            }
-            return response.json();
-        })
-        .then((data) => {
-            // Appel de la fonction pour afficher les joueurs avec les données de l'API
-            displayPlayers(data);
-        })
-        .catch((error) => {
-            console.error('Erreur:', error);
-        });
-};
+const endrickData = {
+    "nom": "Endrick",
+    "age": 15,
+    "taille": "1m73",
+    "poids": "61kg",
+    "nationalite": "Brésil",
+    "postes": ["Buteur", "Ailier droit"],
+    "photo": "./img/Endrick.png",
 
-// Fonction pour afficher les informations générales d'un joueur
-const displayGeneralInfo = (player) => {
-    const generalInfo = document.createElement('div');
-    generalInfo.className = 'general-info';
-    generalInfo.innerHTML = `<h3>Informations Générales de ${player.nom}</h3>`;
-    generalInfo.innerHTML += `<img src="${player.photo}" alt="${player.nom}" width="200">`;
-    generalInfo.innerHTML += `<p>Âge: ${player.age} ans</p>`;
-    generalInfo.innerHTML += `<p>Taille: ${player.taille}</p>`;
-    generalInfo.innerHTML += `<p>Poids: ${player.poids}</p>`;
-    generalInfo.innerHTML += `<p>Nationalité: ${player.nationalite}</p>`;
-    generalInfo.innerHTML += `<p>Postes: ${player.postes.join(', ')}</p>`;
-    return generalInfo;
-};
-
-// Fonction pour afficher les attributs techniques d'un joueur
-const displayTechnicalAttributes = (player) => {
-    const technicalAttributes = document.createElement('div');
-    technicalAttributes.className = 'technical-attributes';
-    technicalAttributes.innerHTML = `<h3>Attributs Techniques de ${player.nom}</h3><ul>`;
-
-    const technicalAttrs = [
-        'Centres',
-        'Contrôle de Balle',
-        'Corners',
-        'Coups Francs',
-        'Dribbles',
-        'Finition',
-        'Jeu de Tête',
-        'Marquage',
-        'Passes',
-        'Penalty',
-        'Tacles',
-        'Technique',
-        'Tirs de Loin',
-        'Touches Longues'
-    ];
-
-    for (const attr of technicalAttrs) {
-        technicalAttributes.innerHTML += `<li>${attr}: <span>${player.technical[attr]}</span></li>`;
+    "technical": {
+        "Centres": 10,
+        "Contrôle de Balle": 13,
+        "Corners": 7,
+        "Coup Francs": 12,
+        "Dribbles": 15,
+        "Finition": 13,
+        "Jeu de Tête": 9,
+        "Marquage": 4,
+        "Passes": 11,
+        "Penalty": 11,
+        "Tacles": 4,
+        "Technique": 13,
+        "Tirs de Loin": 10,
+        "Touches Longues": 2
+    },
+    
+    "mental": {
+        "Agressivité": 11,
+        "Anticipation": 12,
+        "Appels de Balle": 12,
+        "Concentration": 11,
+        "Courage": 11,
+        "Décisions": 12,
+        "Détermination": 14,
+        "Inspiration": 18,
+        "Jeu Collectif": 9,
+        "Leadership": 3,
+        "Placement": 6,
+        "Sang-Froid": 13,
+        "Vision du Jeu": 11,
+        "Volume de Jeu": 11
+    },
+    
+    "physical": {
+        "Accélération": 15,
+        "Agilité": 13,
+        "Détente Verticale": 6,
+        "Endurance": 11,
+        "Équilibre": 14,
+        "Puissance": 13,
+        "Qualité Physiques Naturelles": 14,
+        "Vitesse": 13
     }
-
-    technicalAttributes.innerHTML += '</ul>';
-    return technicalAttributes;
 };
 
-// Fonction pour afficher les attributs mentaux d'un joueur
-const displayMentalAttributes = (player) => {
-    const mentalAttributes = document.createElement('div');
-    mentalAttributes.className = 'mental-attributes';
-    mentalAttributes.innerHTML = `<h3>Attributs Mentaux de ${player.nom}</h3><ul>`;
-
-    const mentalAttrs = [
-        'Agressivité',
-        'Anticipation',
-        'Appels de Balle',
-        'Concentration',
-        'Courage',
-        'Décisions',
-        'Détermination',
-        'Inspiration',
-        'Jeu Collectif',
-        'Leadership',
-        'Placement',
-        'Sang-froid',
-        'Vision du Jeu',
-        'Volume de Jeu'
-    ];
-
-    for (const attr of mentalAttrs) {
-        mentalAttributes.innerHTML += `<li>${attr}: <span>${player.mental[attr]}</span></li>`;
-    }
-
-    mentalAttributes.innerHTML += '</ul>';
-    return mentalAttributes;
+// Fonction pour créer un élément avec du texte
+const createElementWithText = (tagName, text) => {
+    const element = document.createElement(tagName);
+    element.textContent = text;
+    return element;
 };
 
-// Fonction pour afficher les attributs physiques d'un joueur
-const displayPhysicalAttributes = (player) => {
-    const physicalAttributes = document.createElement('div');
-    physicalAttributes.className = 'physical-attributes';
-    physicalAttributes.innerHTML = `<h3>Attributs Physiques de ${player.nom}</h3><ul>`;
+// Fonction pour créer une carte de joueur avec photo et attributs
+const createPlayerCardWithAttributes = (player) => {
+    const playerCard = document.createElement('div');
+    playerCard.className = 'player-card';
 
-    const physicalAttrs = [
-        'Accélération',
-        'Agilité',
-        'Détente Verticale',
-        'Endurance',
-        'Équilibre',
-        'Puissance',
-        'Qualité Physiques Naturelles',
-        'Vitesse'
-    ];
+    // Création de l'élément image
+    const playerImage = document.createElement('img');
+    playerImage.src = player.photo; // Utilisation de l'URL de l'image du joueur
+    playerImage.alt = `${player.nom}`;
+    playerCard.appendChild(playerImage);
 
-    for (const attr of physicalAttrs) {
-        physicalAttributes.innerHTML += `<li>${attr}: <span>${player.physical[attr]}</span></li>`;
-    }
+    // Création des éléments pour les attributs techniques
+    const technicalAttributes = createAttributesElement("Attributs Techniques", endrickData.technical);
+    playerCard.appendChild(technicalAttributes);
 
-    physicalAttributes.innerHTML += '</ul>';
-    return physicalAttributes;
+    // Création des éléments pour les attributs mentaux
+    const mentalAttributes = createAttributesElement("Attributs Mentaux", endrickData.mental);
+    playerCard.appendChild(mentalAttributes);
+
+    // Création des éléments pour les attributs physiques
+    const physicalAttributes = createAttributesElement("Attributs Physiques", endrickData.physical);
+    playerCard.appendChild(physicalAttributes);
+
+    return playerCard;
 };
 
-// Fonction pour afficher les joueurs avec les données de l'API
-const displayPlayers = (players) => {
+// Fonction pour afficher le joueur Endrick
+const displayEndrick = () => {
     const app = document.getElementById('app');
-    players.forEach((player) => {
-        const playerCard = document.createElement('div');
-        playerCard.className = 'player-card';
-        playerCard.appendChild(displayGeneralInfo(player));
-        playerCard.appendChild(displayTechnicalAttributes(player));
-        playerCard.appendChild(displayMentalAttributes(player));
-        playerCard.appendChild(displayPhysicalAttributes(player));
-        app.appendChild(playerCard);
-    });
+    const endrickCard = createPlayerCardWithAttributes(endrickData);
+    app.appendChild(endrickCard);
 };
 
-// Appel de la fonction pour récupérer les données des joueurs depuis l'API
-fetchPlayerData();
+// Appel de la fonction pour afficher le joueur Endrick
+displayEndrick();
