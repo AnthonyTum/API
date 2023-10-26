@@ -5,7 +5,7 @@ const endrickData = {
     "poids": "61kg",
     "nationalite": "Brésil",
     "postes": ["Buteur", "Ailier droit"],
-    "photo": "img/Endrick.png", // URL de l'image du joueur
+    "photo": "img/Endrick.png",
 
     "technical": {
         "Centres": 10,
@@ -70,7 +70,7 @@ function createAttributesList(attributes) {
 }
 
 function displayEndrick() {
-    const playerCard = document.getElementById('player-card');
+    const playerCard = document.getElementById('player-card2');
     
     // Affichage de la photo du joueur
     const playerImage = playerCard.querySelector('img');
@@ -98,7 +98,7 @@ const musialaData = {
     "poids": "70kg",
     "nationalite": "Allemagne",
     "postes": ["Ailier gauche", "Milieu Offensif Centre"],
-    "photo": "img/Musiala.png", // URL de l'image du joueur
+    "photo": "img/Musiala.png",
 
     "technical": {
         "Centres": 9,
@@ -147,7 +147,7 @@ const musialaData = {
 };
 
 function displayMusiala() {
-    const playerCard = document.getElementById('player-card');
+    const playerCard = document.getElementById('player-card2');
     
     // Affichage de la photo du joueur
     const playerImage = playerCard.querySelector('img');
