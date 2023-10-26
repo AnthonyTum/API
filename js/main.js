@@ -5,7 +5,7 @@ const endrickData = {
     "poids": "61kg",
     "nationalite": "Brésil",
     "postes": ["Buteur", "Ailier droit"],
-    "photo": "./img/Endrick.png",
+    "photo": "img/Endrick.png", // URL de l'image du joueur
 
     "technical": {
         "Centres": 10,
@@ -53,75 +53,40 @@ const endrickData = {
     }
 };
 
-// Fonction pour créer un élément avec du texte
-const createElementWithText = (tagName, text) => {
-    const element = document.createElement(tagName);
+function createElementWithText(tag, text) {
+    const element = document.createElement(tag);
     element.textContent = text;
     return element;
-};
+}
 
-// Fonction pour créer une carte de joueur avec photo et attributs
-const createPlayerCardWithAttributes = (player) => {
-    const playerCard = document.createElement('div');
-    playerCard.className = 'player-card';
-
-    // Création de l'élément image
-    const playerImage = document.createElement('img');
-    playerImage.src = player.photo; // Utilisation de l'URL de l'image du joueur
-    playerImage.alt = `${player.nom}`;
-    playerCard.appendChild(playerImage);
-
-    // Création des éléments pour les attributs techniques
-    const technicalAttributesElement = document.createElement('div');
-    technicalAttributesElement.className = 'attributes';
-
-    const technicalAttributesTitle = createElementWithText('h2', 'Attributs Techniques');
-    technicalAttributesElement.appendChild(technicalAttributesTitle);
-
-    for (const attribute in endrickData.technical) {
-        const attributeElement = document.createElement('p');
-        attributeElement.textContent = `${attribute}: ${endrickData.technical[attribute]}`;
-        technicalAttributesElement.appendChild(attributeElement);
+function createAttributesList(attributes) {
+    const list = document.createElement('ul');
+    for (const attribute in attributes) {
+        const listItem = document.createElement('li');
+        listItem.textContent = `${attribute}: ${attributes[attribute]}`;
+        list.appendChild(listItem);
     }
+    return list;
+}
 
-    playerCard.appendChild(technicalAttributesElement);
+function displayEndrick() {
+    const playerCard = document.getElementById('player-card');
+    
+    // Affichage de la photo du joueur
+    const playerImage = playerCard.querySelector('img');
+    playerImage.src = endrickData.photo;
 
-    // Création des éléments pour les attributs mentaux
-    const mentalAttributesElement = document.createElement('div');
-    mentalAttributesElement.className = 'attributes';
+    // Ajout des attributs techniques
+    const technicalAttributes = document.getElementById('technical-attributes');
+    technicalAttributes.appendChild(createAttributesList(endrickData.technical));
 
-    const mentalAttributesTitle = createElementWithText('h2', 'Attributs Mentaux');
-    mentalAttributesElement.appendChild(mentalAttributesTitle);
+    // Ajout des attributs mentaux
+    const mentalAttributes = document.getElementById('mental-attributes');
+    mentalAttributes.appendChild(createAttributesList(endrickData.mental));
 
-    for (const attribute in endrickData.mental) {
-        const attributeElement = document.createElement('p');
-        attributeElement.textContent = `${attribute}: ${endrickData.mental[attribute]}`;
-        mentalAttributesElement.appendChild(attributeElement);
-    }
+    // Ajout des attributs physiques
+    const physicalAttributes = document.getElementById('physical-attributes');
+    physicalAttributes.appendChild(createAttributesList(endrickData.physical));
+}
 
-    playerCard.appendChild(mentalAttributesElement);
-
-    // Création des éléments pour les attributs physiques
-    const physicalAttributesElement = document.createElement('div');
-    physicalAttributesElement.className = 'attributes';
-
-    const physicalAttributesTitle = createElementWithText('h2', 'Attributs Physiques');
-    physicalAttributesElement.appendChild(physicalAttributesTitle);
-
-    for (const attribute in endrickData.physical) {
-        const attributeElement = document.createElement('p');
-        attributeElement.textContent = `${attribute}: ${endrickData.physical[attribute]}`;
-        physicalAttributesElement.appendChild(attributeElement);
-    }
-
-    playerCard.appendChild(physicalAttributesElement);
-
-    // Fonction pour afficher le joueur Endrick
-    const displayEndrick = () => {
-    const app = document.getElementById('app');
-    const endrickCard = createPlayerCardWithAttributes(endrickData);
-    app.appendChild(endrickCard);
-};
-
-// Appel de la fonction pour afficher le joueur Endrick
 displayEndrick();
