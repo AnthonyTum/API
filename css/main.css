@@ -7,6 +7,11 @@ body {
     background-attachment: fixed;
 }
 
+.page-title {
+    text-align: center;
+    color: rgb(73, 4, 103);
+}
+
 .container {
     width: 80%;
     max-width: 1200px;
@@ -68,4 +73,17 @@ table tr {
 
 table td {
     padding: 5px 0;
+}
+
+
+.attributes-table.technical {
+    background: #410169;
+}
+
+.attributes-table.mental {
+    background: #5d33be;
+}
+
+.attributes-table.physical {
+    background: #6f6196;
 }
