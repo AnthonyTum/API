@@ -5,7 +5,7 @@ const endrickData = {
     "poids": "61kg",
     "nationalite": "Brésil",
     "postes": ["Buteur", "Ailier droit"],
-    "photo": "API/img/Endrick.png",
+    "photo": "./img/Endrick.png",
 
     "technical": {
         "Centres": 10,
@@ -72,22 +72,52 @@ const createPlayerCardWithAttributes = (player) => {
     playerCard.appendChild(playerImage);
 
     // Création des éléments pour les attributs techniques
-    const technicalAttributes = createAttributesElement("Attributs Techniques", endrickData.technical);
-    playerCard.appendChild(technicalAttributes);
+    const technicalAttributesElement = document.createElement('div');
+    technicalAttributesElement.className = 'attributes';
+
+    const technicalAttributesTitle = createElementWithText('h2', 'Attributs Techniques');
+    technicalAttributesElement.appendChild(technicalAttributesTitle);
+
+    for (const attribute in endrickData.technical) {
+        const attributeElement = document.createElement('p');
+        attributeElement.textContent = `${attribute}: ${endrickData.technical[attribute]}`;
+        technicalAttributesElement.appendChild(attributeElement);
+    }
+
+    playerCard.appendChild(technicalAttributesElement);
 
     // Création des éléments pour les attributs mentaux
-    const mentalAttributes = createAttributesElement("Attributs Mentaux", endrickData.mental);
-    playerCard.appendChild(mentalAttributes);
+    const mentalAttributesElement = document.createElement('div');
+    mentalAttributesElement.className = 'attributes';
+
+    const mentalAttributesTitle = createElementWithText('h2', 'Attributs Mentaux');
+    mentalAttributesElement.appendChild(mentalAttributesTitle);
+
+    for (const attribute in endrickData.mental) {
+        const attributeElement = document.createElement('p');
+        attributeElement.textContent = `${attribute}: ${endrickData.mental[attribute]}`;
+        mentalAttributesElement.appendChild(attributeElement);
+    }
+
+    playerCard.appendChild(mentalAttributesElement);
 
     // Création des éléments pour les attributs physiques
-    const physicalAttributes = createAttributesElement("Attributs Physiques", endrickData.physical);
-    playerCard.appendChild(physicalAttributes);
+    const physicalAttributesElement = document.createElement('div');
+    physicalAttributesElement.className = 'attributes';
 
-    return playerCard;
-};
+    const physicalAttributesTitle = createElementWithText('h2', 'Attributs Physiques');
+    physicalAttributesElement.appendChild(physicalAttributesTitle);
 
-// Fonction pour afficher le joueur Endrick
-const displayEndrick = () => {
+    for (const attribute in endrickData.physical) {
+        const attributeElement = document.createElement('p');
+        attributeElement.textContent = `${attribute}: ${endrickData.physical[attribute]}`;
+        physicalAttributesElement.appendChild(attributeElement);
+    }
+
+    playerCard.appendChild(physicalAttributesElement);
+
+    // Fonction pour afficher le joueur Endrick
+    const displayEndrick = () => {
     const app = document.getElementById('app');
     const endrickCard = createPlayerCardWithAttributes(endrickData);
     app.appendChild(endrickCard);
