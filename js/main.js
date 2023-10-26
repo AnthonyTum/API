@@ -90,3 +90,80 @@ function displayEndrick() {
 }
 
 displayEndrick();
+
+const musialaData = {
+    "nom": "Jamal Musiala",
+    "age": 19,
+    "taille": "1m83",
+    "poids": "70kg",
+    "nationalite": "Allemagne",
+    "postes": ["Ailier gauche", "Milieu Offensif Centre"],
+    "photo": "img/Musiala.png", // URL de l'image du joueur
+
+    "technical": {
+        "Centres": 9,
+        "Contrôle de Balle": 16,
+        "Corners": 6,
+        "Coup Francs": 6,
+        "Dribbles": 19,
+        "Finition": 13,
+        "Jeu de Tête": 8,
+        "Marquage": 10,
+        "Passes": 15,
+        "Penalty": 12,
+        "Tacles": 12,
+        "Technique": 18,
+        "Tirs de Loin": 13,
+        "Touches Longues": 6
+    },
+    
+    "mental": {
+        "Agressivité": 12,
+        "Anticipation": 14,
+        "Appels de Balle": 15,
+        "Concentration": 12,
+        "Courage": 12,
+        "Décisions": 14,
+        "Détermination": 17,
+        "Inspiration": 18,
+        "Jeu Collectif": 14,
+        "Leadership": 6,
+        "Placement": 10,
+        "Sang-Froid": 14,
+        "Vision du Jeu": 15,
+        "Volume de Jeu": 15
+    },
+    
+    "physical": {
+        "Accélération": 15,
+        "Agilité": 17,
+        "Détente Verticale": 10,
+        "Endurance": 12,
+        "Équilibre": 16,
+        "Puissance": 10,
+        "Qualité Physiques Naturelles": 16,
+        "Vitesse": 15
+    }
+};
+
+function displayMusiala() {
+    const playerCard = document.getElementById('player-card');
+    
+    // Affichage de la photo du joueur
+    const playerImage = playerCard.querySelector('img');
+    playerImage.src = musialaData.photo;
+
+    // Ajout des attributs techniques
+    const technicalAttributes = document.getElementById('technical-attributes');
+    technicalAttributes.appendChild(createAttributesList(musialaData.technical));
+
+    // Ajout des attributs mentaux
+    const mentalAttributes = document.getElementById('mental-attributes');
+    mentalAttributes.appendChild(createAttributesList(musialaData.mental));
+
+    // Ajout des attributs physiques
+    const physicalAttributes = document.getElementById('physical-attributes');
+    physicalAttributes.appendChild(createAttributesList(musialaData.physical));
+}
+
+displayMusiala();
