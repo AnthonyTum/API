@@ -5,7 +5,7 @@ const endrickData = {
     "poids": "61kg",
     "nationalite": "Brésil",
     "postes": ["Buteur", "Ailier droit"],
-    "photo": "./img/Endrick.png",
+    "photo": "API/img/Endrick.png",
 
     "technical": {
         "Centres": 10,
