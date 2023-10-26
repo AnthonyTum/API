@@ -231,7 +231,7 @@ playersData.forEach(playerData => {
     playerCardContainer.appendChild(playerCard);
 });
 
-const backgrounds = ['img/wallpaper-01.jpg', 'wallpaper-02.jpg', 'wallpaper-05.jpg'];
+const backgrounds = ['img/wallpaper-01.jpg', 'img/wallpaper-02.jpg', 'img/wallpaper-05.jpg'];
 let currentBackgroundIndex = 0;
 
 function changeBackground() {
