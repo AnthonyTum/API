@@ -1,6 +1,6 @@
 // Fonction pour récupérer les données des joueurs depuis une API
 const fetchPlayerData = () => {
-    fetch('URL_DE_VOTRE_API') // Remplacez 'URL_DE_VOTRE_API' par l'URL réelle de l'API
+    fetch('Uhttps://github.com/AnthonyTum/API') // Remplacez 'URL_DE_VOTRE_API' par l'URL réelle de l'API
         .then((response) => {
             if (!response.ok) {
                 throw new Error('Erreur de récupération des données.');
