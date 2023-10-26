@@ -36,7 +36,7 @@ h1 {
     width: calc(33.33% - 20px);
     margin-bottom: 20px;
     background: #fff;
-    padding: 20px;
+    padding: 50px;
     border-radius: 10px;
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
 }
@@ -47,7 +47,8 @@ img {
 }
 
 .attributes-section {
-    display: flex;
+    display: flex left;
+    text-align: ;
     justify-content: space-between;
 }
 
