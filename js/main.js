@@ -230,3 +230,14 @@ playersData.forEach(playerData => {
     const playerCard = createPlayerCard(playerData);
     playerCardContainer.appendChild(playerCard);
 });
+
+const backgrounds = ['background1.jpg', 'background2.jpg', 'background3.jpg'];
+let currentBackgroundIndex = 0;
+
+function changeBackground() {
+    document.body.style.backgroundImage = `url(${backgrounds[currentBackgroundIndex]})`;
+    currentBackgroundIndex = (currentBackgroundIndex + 1) % backgrounds.length;
+}
+
+// Appel de la fonction pour changer le fond à un intervalle régulier
+setInterval(changeBackground, 5000); // Change toutes les 5 secondes
